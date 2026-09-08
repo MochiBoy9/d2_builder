@@ -46,7 +46,9 @@
       .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
   }
 
-  // Fold accents + punctuation so "Ex Diris" matches "ex diris" and "St0mp-EE5" matches "stompee".
+  // Lower-case and strip accents, so "Ex Díris" matches "ex diris". Punctuation
+  // is deliberately kept: slug() below depends on word boundaries surviving,
+  // and fuzzy() already steps over a hyphen or an apostrophe on its own.
   function fold(str) {
     var s = String(str == null ? "" : str).toLowerCase();
     return s.normalize ? s.normalize("NFD").replace(/[\u0300-\u036f]/g, "") : s;

@@ -867,6 +867,8 @@ textarea.input { height: auto; padding: 8px 9px; line-height: 1.5; resize: verti
 @keyframes toastin { from { opacity: 0; transform: translateY(8px); } }
 .toast--error { border-color: rgba(232, 105, 92, 0.6); }
 .toast--error .ico { color: var(--err); }
+.toast--warn { border-color: rgba(229, 180, 85, 0.55); }
+.toast--warn .ico { color: var(--warn); }
 .toast--ok .ico { color: var(--ok); }
 
 /* ---------------- utility ---------------- */
@@ -919,15 +921,25 @@ textarea.input { height: auto; padding: 8px 9px; line-height: 1.5; resize: verti
 .lvlcard__name { font-size: var(--fs-md); font-weight: 640; color: var(--bone-000); }
 .lvlcard__tag { font-size: var(--fs-sm); color: var(--bone-300); margin-top: 1px; }
 .lvlcard__list { margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--rule); }
-.lvlcard__row {
+
+/* A verb and the sentence it introduces: the level cards' SHOWS / HIDES /
+   SIMPLIFIES rows and the sync dialog's list of what a sync adds. The grid
+   lives on the list rather than on each row, so the column is as wide as the
+   longest verb and every sentence starts in the same place. A fixed width
+   clipped SIMPLIFIES into the sentence beside it; a per-row grid left the
+   sentences ragged. */
+.verbrows {
   display: grid;
-  grid-template-columns: 68px minmax(0, 1fr);
-  gap: var(--s2);
+  grid-template-columns: minmax(68px, max-content) minmax(0, 1fr);
+  column-gap: var(--s3);
+  row-gap: 5px;
   align-items: baseline;
+}
+.lvlcard__row {
+  display: contents;
   font-size: var(--fs-sm);
   color: var(--bone-300);
   line-height: 1.45;
-  padding: 2px 0;
 }
 .lvlcard__verb { color: var(--bone-500); }
 

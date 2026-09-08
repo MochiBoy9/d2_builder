@@ -116,6 +116,7 @@
           class: 'row' + (isOn ? ' is-on' : ''),
           type: 'button',
           disabled: it.disabled || false,
+          'aria-current': isOn ? 'true' : null,
           title: it.disabledReason || '',
           style: it.rarityColor ? { '--rar': it.rarityColor } : null,
           onclick: function () {
@@ -154,7 +155,11 @@
         autocomplete: 'off',
         spellcheck: 'false'
       });
-      var list = el('div', { class: 'sheet-panel__list', role: 'listbox' });
+      // Not role="listbox": these rows are buttons that pick and close, and a
+      // listbox whose children are buttons inside group divs is announced as an
+      // empty one. The panel is already role="dialog"; buttons speak for
+      // themselves, and the equipped row is marked aria-current.
+      var list = el('div', { class: 'sheet-panel__list' });
       var count = el('span', { class: 'lbl lbl--micro' });
 
       var filters = cfg.filters || [];

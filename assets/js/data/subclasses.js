@@ -180,7 +180,6 @@
     { id: 'as_knockout',       name: 'Knockout',       classId: 'titan', element: 'arc', slots: 2, desc: 'Breaking a shield or critically wounding a target grants melee damage, range and health on kill.' },
     { id: 'as_touch_of_thunder', name: 'Touch of Thunder', classId: 'titan', element: 'arc', slots: 2, desc: 'Arc grenades gain enhanced functionality: bigger storms, extra pulses, chained bolts.' },
     { id: 'as_juggernaut',     name: 'Juggernaut',     classId: 'titan', element: 'arc', slots: 1, desc: 'While sprinting with full class ability energy, gain a frontal Arc shield.' },
-    { id: 'as_into_the_fray_arc', name: 'Into the Fray', classId: 'titan', element: 'arc', slots: 2, desc: 'Destroying a Tangle or nearby Strand kills grant Woven Mail and increased melee regeneration.' },
 
     // --- Titan Void (Sentinel) ---
     { id: 'as_controlled_demolition', name: 'Controlled Demolition', classId: 'titan', element: 'void', slots: 2, desc: 'Void ability hits make targets volatile; volatile detonations heal you.' },

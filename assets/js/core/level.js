@@ -136,7 +136,8 @@
     aspect: 'Aspects are the two big perks that define how a subclass plays. ' +
             'They also decide how many Fragment slots you get.',
     fragment: 'Fragments are small modifiers you slot into the openings your ' +
-              'Aspects create. Two Aspects with three slots each means six Fragments.',
+              'Aspects create. Each Aspect opens one or two, so two Aspects ' +
+              'give you between two and four Fragments.',
     archetype: 'In Armor 3.0 every armor piece has an archetype — Gunner, ' +
                'Bulwark, Brawler, Specialist, Grenadier or Paragon. It decides ' +
                'which stats that piece is good at before any mods.',
