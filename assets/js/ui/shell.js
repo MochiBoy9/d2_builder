@@ -449,6 +449,10 @@
       class: 'btn btn--ghost',
       type: 'button',
       'aria-pressed': 'false',
+      // Named on the element rather than only by the span, because the span is
+      // what collapses on a phone.
+      title: label,
+      'aria-label': label,
       html: D2.icon(glyph, { size: 15 }) + '<span>' + label + '</span>',
       onclick: function () { D2.state.setView(id); }
     });
@@ -484,6 +488,7 @@
           class: 'btn btn--ghost lvlbtn',
           type: 'button',
           title: 'Builder mode — how much the app shows and explains',
+          'aria-label': 'Builder mode',
           onclick: function () { Shell.openLevelPicker(false); }
         })),
         el('button', {

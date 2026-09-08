@@ -1108,7 +1108,13 @@ body[data-level="beginner"] .perkbtn { height: 38px; }
   .stat__val { font-size: var(--fs-md); }
   .stat__track { margin-top: 4px; }
   .statbar__inner > .row-x { justify-content: flex-end; }
+  /* The top bar's labels do not fit on a phone, and a row that overflows here
+     makes the whole document wider than the viewport: body scrolling is off, so
+     a focus landing off-screen slides the page sideways with no way to get it
+     back. Collapse to the icons, which each carry their own accessible name. */
   .topbar { gap: var(--s2); padding: 0 var(--s3); }
+  .topbar__actions .btn > span { display: none; }
+  .topbar__actions .btn { width: 32px; padding: 0; }
   .mark__text { display: none; }
   .mark { padding-right: var(--s2); }
   .dossier { padding: var(--s3) var(--s3) calc(var(--statbar-h) + var(--s6)); }
@@ -1124,6 +1130,10 @@ body[data-level="beginner"] .perkbtn { height: 38px; }
 
 @media (max-width: 420px) {
   :root { --statbar-h: 150px; }
+
+  /* Last thing to go: the mark. Seven icon buttons and a name field do not
+     both fit here, and the field is the one you actually type into. */
+  .mark { display: none; }
   .statbar__inner { padding: 10px var(--s3) 12px; }
   .statbar__stats { gap: 8px var(--s2); }
   .btn { padding: 0 9px; }

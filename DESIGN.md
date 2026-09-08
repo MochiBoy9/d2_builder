@@ -254,8 +254,13 @@ Responsive behaviour is structural, never fluid type:
   into a single status chip that opens the full check in a sheet. Identity band
   stacks. Stats go to three columns.
 - **≤760px** — stat labels shorten to three-letter codes, coaching notes drop,
-  armor and option grids go single-column, sheets go full width.
-- **≤420px** — tighter bar padding and button padding.
+  armor and option grids go single-column, sheets go full width, and the top
+  bar's buttons collapse to their icons. That last one is structural rather
+  than cosmetic: a top bar wider than the viewport makes the whole document
+  scroll sideways, and with body scrolling off there is no way to scroll it
+  back — so the labels go before the row can overflow.
+- **≤420px** — tighter bar padding and button padding, and the mark drops so
+  the build-name field keeps a usable width.
 
 ---
 
