@@ -186,21 +186,42 @@ colour, caret colour, custom scrollbar, focus ring, placeholder tone.
 Authored SVG on a 24×24 box, original drawings in Bungie's visual language —
 angular, symmetrical, built from straight cuts — never copies of Bungie's art
 files. 1.5-weight strokes for interface icons; solid geometry for everything
-that has to survive at 14px in a dense grid:
+that has to survive at 14px in a dense grid.
 
-- three **class marks** (Titan anvil, Hunter hood, Warlock wings);
-- six **element glyphs** plus Kinetic, each the shape the game trains you to
-  read at a glance;
-- three **ammo** marks;
-- five **armor slots**, with the class-specific Mark, Cloak and Bond standing in
-  for the generic class-item shape whenever the class is known;
-- a side-profile **silhouette for all eighteen weapon types**, drawn on a shared
-  baseline so a column of them lines up, tinted by damage type in the slot well
-  the way the game's inventory does.
+**The rule that decides every mark: differ in silhouette, not in detail.** Icons
+in this app are seen three at a time, side by side, at 14–22px. Three framed
+diamonds are three framed diamonds however carefully the insides differ, so
+nothing shares a primitive with its neighbours:
 
-Any element, class, armor slot, weapon type or ammo id resolves to an icon of
-the same name, so a caller can pass a data id straight through. No emoji, no
-icon font.
+- three **class marks** on the game's own construction — the Titan hexagon
+  banded across the middle, the Hunter chevron stack, the Warlock wing
+  triangles converging to a point;
+- six **element glyphs** plus Kinetic, each built from a different primitive so
+  no two collide small: a flame, a bolt, an eclipsed sphere, a shard cluster, a
+  braid, a cut gem, a round;
+- three **ammo** marks drawn as what actually fits in the gun — rifle round,
+  shell, rocket — because that is what the colour is telling you;
+- five **armor slots** drawn as the piece rather than as a pictogram of one:
+  the visor slit, the flared vambraces, the split chest plate with pauldrons,
+  greaves standing on feet. The class-specific Mark, Cloak and Bond stand in for
+  the generic class-item shape whenever the class is known;
+- six **Armor 3.0 stat marks** — reticle, shield, raised barricade, grenade,
+  Super going off, fist — leading each readout in the stat bar so the row is
+  scannable before it is read;
+- a side-profile **silhouette for all eighteen weapon types**, drawn on one
+  shared receiver line so a column of them lines up, and carrying the feature a
+  player actually names the type by: a Hand Cannon's cylinder, a Scout's glass,
+  a Fusion's coils, a Shotgun's pump, a drum on one Grenade Launcher and a break
+  action on the other. Tinted by damage type in the slot well the way the game's
+  inventory does.
+
+Where the game has a published construction the mark follows it; where it does
+not, the mark is drawn from what the thing does, in the same grammar. Both are
+original geometry either way.
+
+Any element, class, armor slot, weapon type, ammo id or stat id resolves to an
+icon of the same name, so a caller can pass a data id straight through. No
+emoji, no icon font.
 
 ### Level as a design variable
 

@@ -66,6 +66,8 @@
       onclick: function () { openDetail(statDef.id); }
     }, [
       el('span', { class: 'stat__top' }, [
+        // The stat's own mark, so the column is scannable before it is read.
+        el('span', { class: 'stat__glyph ico', html: D2.icon(statDef.id, { size: 14 }) }),
         // Full name where there is room, three-letter code where there is not.
         el('span', { class: 'stat__abbr stat__abbr--long', text: statDef.name.toUpperCase() }),
         el('span', { class: 'stat__abbr stat__abbr--short', text: statDef.abbr }),
@@ -92,6 +94,7 @@
 
     var body = el('div', { class: 'stack gap4' }, [
       el('div', { class: 'row-x gap3' }, [
+        el('span', { class: 'ico', html: D2.icon(def.id, { size: 30 }) }),
         el('div', { class: 'display', style: { 'font-size': 'var(--fs-3xl)' }, text: value }),
         el('div', { class: 'stack' }, [
           el('span', { class: 'lbl lbl--el', text: 'Tier ' + ctx.tier + ' of 20' }),

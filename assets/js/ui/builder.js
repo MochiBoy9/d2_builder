@@ -240,7 +240,7 @@
     var current = list.filter(function (x) { return x.id === b.subclass[key]; })[0];
 
     return el('button', {
-      class: 'pick',
+      class: 'pick' + (current ? ' is-set' : ''),
       type: 'button',
       disabled: !b.classId || !b.element,
       onclick: function () {
@@ -282,9 +282,11 @@
     var cls = G.classById[b.classId];
 
     host.appendChild(el('div', { class: 'grid grid--abil' }, [
-      abilityPick('grenadeId', 'Grenade', 'grenades', b.element),
-      abilityPick('meleeId', 'Melee', 'melees', b.element),
-      abilityPick('classAbilityId', cls.classAbilityLabel, 'classAbilities', 'classitem'),
+      // Each ability slot carries its own mark, the way the game labels them --
+      // the element is already stated by the whole band above.
+      abilityPick('grenadeId', 'Grenade', 'grenades', 'grenade'),
+      abilityPick('meleeId', 'Melee', 'melees', 'melee'),
+      abilityPick('classAbilityId', cls.classAbilityLabel, 'classAbilities', 'class'),
       abilityPick('movementId', cls.movementLabel, 'movements', 'arrowUp')
     ]));
 

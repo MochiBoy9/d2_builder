@@ -145,11 +145,25 @@ glyph font binds the same way and is applied by the `.glyph` class.
 
 Every icon is authored SVG on a 24×24 box — original drawings in Bungie's visual
 language, not copies of Bungie's art files. Solid geometry for the things that
-have to read at 14px in a dense grid: the three class marks, six element glyphs,
-three ammo types, five armor slots (with the class-specific Mark, Cloak and Bond
-for class items), and a side-profile silhouette for all eighteen weapon types, so
-a Hand Cannon looks like a Hand Cannon in its slot and in the picker. 1.5-weight
-strokes for interface icons. No emoji, no icon font.
+have to read at 14px in a dense grid, and one rule behind all of it: marks that
+appear side by side must differ in **silhouette**, not in detail.
+
+- **Class marks** on the game's own construction — the Titan hexagon, the Hunter
+  chevron stack, the Warlock wings.
+- **Elements** each built from a different primitive so no two collide small: a
+  flame, a bolt, an eclipsed sphere, a shard cluster, a braid, a cut gem, and a
+  plain round for Kinetic.
+- **Ammo** drawn as what fits in the gun — rifle round, shell, rocket.
+- **Armor slots** drawn as the piece: visor slit, flared vambraces, split chest
+  plate, greaves standing on feet, plus the class-specific Mark, Cloak and Bond
+  for class items.
+- **The six Armor 3.0 stats** — reticle, shield, barricade, grenade, Super, fist
+  — leading each readout in the stat bar.
+- **Eighteen weapon silhouettes** on one shared receiver line, each carrying the
+  feature you name the type by, so a Hand Cannon looks like a Hand Cannon in its
+  slot and in the picker — cylinder, glass, coils, pump, drum, break action.
+
+1.5-weight strokes for interface icons. No emoji, no icon font.
 
 ---
 

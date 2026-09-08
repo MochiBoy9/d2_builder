@@ -482,6 +482,9 @@
   border: 1px solid var(--rule);
   color: var(--bone-400);
 }
+/* A filled ability slot takes the subclass accent, the way the game tints an
+   equipped ability. An empty one stays bone so it reads as a gap. */
+.pick.is-set .pick__glyph { color: var(--el); }
 .pick__k { font-size: var(--fs-micro); letter-spacing: 0.14em; text-transform: uppercase; color: var(--bone-400); font-weight: 640; }
 .pick__v { font-size: var(--fs-base); font-weight: 560; color: var(--bone-000); margin-top: 1px; }
 .pick__v.is-empty { color: var(--bone-400); font-weight: 430; }
@@ -637,6 +640,10 @@ textarea.input { height: auto; padding: 8px 9px; line-height: 1.5; resize: verti
 
 .stat { display: block; width: 100%; text-align: left; }
 .stat__top { display: flex; align-items: baseline; gap: 6px; }
+/* The stat mark sits on the cap height of the label beside it, not on the
+   baseline the flex row uses for the text. */
+.stat__glyph { align-self: center; color: var(--bone-400); transition: color var(--t); }
+.stat:hover .stat__glyph { color: var(--bone-200); }
 .stat__abbr { font-size: var(--fs-micro); letter-spacing: 0.16em; font-weight: 680; color: var(--bone-400); }
 .stat__abbr--short { display: none; }
 .stat__val {
