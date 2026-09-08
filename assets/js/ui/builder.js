@@ -59,7 +59,9 @@
           title: c.tagline,
           onclick: function () { setClass(c.id); }
         }, [
-          el('span', { class: 'ico', html: D2.icon(c.id, { size: 30 }) }),
+          el('span', { class: 'facet facet--lg' }, [
+            el('span', { class: 'ico', html: D2.icon(c.id, { size: 24 }) })
+          ]),
           el('span', { class: 'classpick__name', text: c.name })
         ]);
       }));
@@ -77,7 +79,9 @@
           onclick: function () { setElement(id); },
           title: path ? path.name : e.name
         }, [
-          el('span', { class: 'ico', html: D2.icon(id, { size: 16 }) }),
+          el('span', { class: 'facet' }, [
+            el('span', { class: 'ico', html: D2.icon(id, { size: 14 }) })
+          ]),
           el('span', { text: path ? path.name : e.name })
         ]);
       }));
@@ -221,7 +225,7 @@
       allowClear: true,
       items: pools.supers.map(function (s) {
         return {
-          id: s.id, name: s.name, desc: s.desc, glyph: b.element,
+          id: s.id, name: s.name, desc: s.desc, glyph: 'super',
           meta: [{ text: s.kind === 'roaming' ? 'Roaming' : 'One-shot', cls: 'chip--plain' }]
         };
       }),
@@ -257,7 +261,9 @@
         });
       }
     }, [
-      el('span', { class: 'pick__glyph', html: D2.icon(glyph, { size: 18 }) }),
+      el('span', { class: 'pick__glyph facet facet--md' }, [
+        el('span', { class: 'ico', html: D2.icon(glyph, { size: 18 }) })
+      ]),
       el('span', { class: 'stack', style: { 'min-width': '0' } }, [
         el('span', { class: 'pick__k', text: label }),
         el('span', { class: 'pick__v' + (current ? '' : ' is-empty'), text: current ? current.name : 'Empty' })
@@ -282,10 +288,10 @@
     var cls = G.classById[b.classId];
 
     host.appendChild(el('div', { class: 'grid grid--abil' }, [
-      abilityPick('grenadeId', 'Grenade', 'grenades', b.element),
-      abilityPick('meleeId', 'Melee', 'melees', b.element),
-      abilityPick('classAbilityId', cls.classAbilityLabel, 'classAbilities', 'classitem'),
-      abilityPick('movementId', cls.movementLabel, 'movements', 'arrowUp')
+      abilityPick('grenadeId', 'Grenade', 'grenades', 'grenade'),
+      abilityPick('meleeId', 'Melee', 'melees', 'melee'),
+      abilityPick('classAbilityId', cls.classAbilityLabel, 'classAbilities', D2.classAbilityIcon(b.classId)),
+      abilityPick('movementId', cls.movementLabel, 'movements', D2.movementIcon(b.classId))
     ]));
 
     /* --- Aspects --- */

@@ -145,11 +145,18 @@ glyph font binds the same way and is applied by the `.glyph` class.
 
 Every icon is authored SVG on a 24×24 box — original drawings in Bungie's visual
 language, not copies of Bungie's art files. Solid geometry for the things that
-have to read at 14px in a dense grid: the three class marks, six element glyphs,
-three ammo types, five armor slots (with the class-specific Mark, Cloak and Bond
-for class items), and a side-profile silhouette for all eighteen weapon types, so
-a Hand Cannon looks like a Hand Cannon in its slot and in the picker. 1.5-weight
-strokes for interface icons. No emoji, no icon font.
+have to read at 14px in a dense grid: the three class marks (the Titan hexagon,
+the Hunter chevrons, the Warlock triangles), six element glyphs plus Kinetic,
+three ammo bricks, five armor slots (with the class-specific Mark, Cloak and Bond
+for class items), the four ability marks in their class-specific forms —
+Barricade / Dodge / Rift and Lift / Jump / Glide — the six Armor 3.0 stat marks,
+and a side-profile silhouette for all eighteen weapon types, so a Hand Cannon
+looks like a Hand Cannon in its slot and in the picker. 1.5-weight strokes for
+interface icons. No emoji, no icon font.
+
+Subclass identity — class marks, element glyphs and the four abilities — sits on
+a diamond (`.facet`), the way the game frames it; gear wells stay square, so the
+two never read as the same thing.
 
 ---
 

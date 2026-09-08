@@ -259,7 +259,9 @@
       var res = B.pieceStats(piece);
       var name = G.armorSlotById[slot.id].name;
       res.sources.forEach(function (src) {
-        add(name + ' — ' + src.label, 'armor', src.stats);
+        // The group is the slot id, so a reader of the breakdown gets the
+        // piece's own mark beside the row rather than one catch-all icon.
+        add(name + ' — ' + src.label, slot.id, src.stats);
       });
     });
 

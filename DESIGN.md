@@ -121,6 +121,12 @@ marks; no word the reader needs is ever set in it.
 - **Corner flag** — a small filled triangle in the top-right of a selected
   option or class tile. This is the selection tell, in place of a thick coloured
   border.
+- **Facet** (`.facet`) — the diamond the game frames subclass identity in. Class
+  marks, element glyphs and the four ability wells sit on one; equipping an
+  element fills its diamond with the element colour and punches the glyph out of
+  it in `--ink-000`. Gear wells stay square, so a subclass choice and a piece of
+  equipment never read as the same control. The diamond is a rotated `::before`
+  rather than a transform on the tile, which would rotate the glyph with it.
 - **Hairlines** — `--rule` (8.5%), `--rule-mid` (15%), `--rule-hi` (26%).
 - **Lift** — `inset 0 1px 0 rgba(255,253,245,.05)` on raised panels: a top edge
   catching light, the way brushed metal does. Shadows carry both offset and blur;
@@ -188,12 +194,20 @@ angular, symmetrical, built from straight cuts — never copies of Bungie's art
 files. 1.5-weight strokes for interface icons; solid geometry for everything
 that has to survive at 14px in a dense grid:
 
-- three **class marks** (Titan anvil, Hunter hood, Warlock wings);
-- six **element glyphs** plus Kinetic, each the shape the game trains you to
-  read at a glance;
-- three **ammo** marks;
+- three **class marks** — the Titan hexagon braced by a bar, the Hunter's three
+  stacked chevrons, the Warlock's three overlapped triangles;
+- six **element glyphs** plus Kinetic, each drawn from the subclass diamonds in
+  game: the Solar flame, the Arc discharge, the Void eye, the two Stasis shards
+  split along a fracture, the Strand thread pulled through its own loop, and the
+  layered Prismatic chevrons;
+- three **ammo** bricks — one silhouette family, three masses, each on its plate;
 - five **armor slots**, with the class-specific Mark, Cloak and Bond standing in
   for the generic class-item shape whenever the class is known;
+- the four **ability marks**, resolved per class through `D2.classAbilityIcon`
+  and `D2.movementIcon`: Grenade and Melee, then Barricade / Dodge / Rift and
+  Lift / Jump / Glide;
+- the six **Armor 3.0 stat marks**, named for the stat ids so the stat bar can
+  pass one straight through;
 - a side-profile **silhouette for all eighteen weapon types**, drawn on a shared
   baseline so a column of them lines up, tinted by damage type in the slot well
   the way the game's inventory does.
