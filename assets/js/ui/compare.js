@@ -62,9 +62,13 @@
       rows.push({ group: group, key: key, a: va, b: vb, delta: delta });
     }
 
+    // Once per build, not once per stat: computeStats walks every piece, mod
+    // and Fragment, and there are six stats on this table.
+    var totalsA = a ? B.computeStats(a).total : null;
+    var totalsB = b ? B.computeStats(b).total : null;
     G.stats.forEach(function (st) {
-      var sa = a ? B.computeStats(a).total[st.id] : 0;
-      var sb = b ? B.computeStats(b).total[st.id] : 0;
+      var sa = totalsA ? totalsA[st.id] : 0;
+      var sb = totalsB ? totalsB[st.id] : 0;
       push('Stats', st.name, String(sa), String(sb), sb - sa);
     });
 

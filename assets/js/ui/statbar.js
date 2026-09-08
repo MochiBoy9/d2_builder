@@ -66,6 +66,8 @@
       onclick: function () { openDetail(statDef.id); }
     }, [
       el('span', { class: 'stat__top' }, [
+        // The game marks these six with their own glyphs; so does the bar.
+        el('span', { class: 'stat__ico ico', html: D2.icon(statDef.id, { size: 14 }) }),
         // Full name where there is room, three-letter code where there is not.
         el('span', { class: 'stat__abbr stat__abbr--long', text: statDef.name.toUpperCase() }),
         el('span', { class: 'stat__abbr stat__abbr--short', text: statDef.abbr }),
@@ -81,6 +83,10 @@
       el('span', { class: 'stat__note', text: note })
     ]);
   }
+
+  /* Every stat row in the attribution list says where it came from; use the
+     mark for that source rather than one catch-all icon. */
+  function sourceGlyph(group) { return D2.hasIcon(group) ? group : 'grid'; }
 
   function openDetail(statId) {
     var b = D2.state.build;
@@ -120,7 +126,7 @@
                 class: 'row-x gap3',
                 style: { padding: '7px 0', 'border-bottom': '1px solid var(--rule)' }
               }, [
-                el('span', { class: 'ico dimmer', html: D2.icon(r.group === 'fragment' ? 'fragment' : 'grid', { size: 14 }) }),
+                el('span', { class: 'ico dimmer', html: D2.icon(sourceGlyph(r.group), { size: 14 }) }),
                 el('span', { style: { 'min-width': '0' }, text: r.label }),
                 el('span', {
                   class: 'num push',

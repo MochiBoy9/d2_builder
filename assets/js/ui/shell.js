@@ -204,7 +204,7 @@
 
       el('div', { class: 'stack gap2' }, [
         el('div', { class: 'lbl', text: 'What a sync adds' }),
-        el('div', { class: 'stack gap1' }, [
+        el('div', { class: 'verbrows' }, [
           ['Every weapon', 'with its real type, damage type, ammo and icon.'],
           ['Every armor piece', 'including the full Exotic list for all three classes.'],
           ['Every weapon perk', 'barrels, magazines, traits, origin traits and masterworks.'],
@@ -212,7 +212,7 @@
           ['Exact roll lists', 'each weapon’s own sockets, so a perk column shows only what that gun can actually roll.']
         ].map(function (row) {
           return el('div', { class: 'lvlcard__row' }, [
-            el('span', { class: 'lbl lbl--micro lvlcard__verb', style: { width: 'auto' }, text: row[0] }),
+            el('span', { class: 'lbl lbl--micro lvlcard__verb', text: row[0] }),
             el('span', { text: row[1] })
           ]);
         }))
@@ -313,7 +313,7 @@
         ]),
         on ? el('span', { class: 'chip chip--el push', style: { '--elc': 'var(--el)' }, text: 'Current' }) : null
       ]),
-      el('div', { class: 'stack gap1 lvlcard__list' }, LEVEL_EFFECTS[def.id].map(function (row) {
+      el('div', { class: 'lvlcard__list verbrows' }, LEVEL_EFFECTS[def.id].map(function (row) {
         return el('div', { class: 'lvlcard__row' }, [
           el('span', { class: 'lbl lbl--micro lvlcard__verb', text: row[0] }),
           el('span', { text: row[1] })
@@ -449,6 +449,10 @@
       class: 'btn btn--ghost',
       type: 'button',
       'aria-pressed': 'false',
+      // Named on the element rather than only by the span, because the span is
+      // what collapses on a phone.
+      title: label,
+      'aria-label': label,
       html: D2.icon(glyph, { size: 15 }) + '<span>' + label + '</span>',
       onclick: function () { D2.state.setView(id); }
     });
@@ -484,6 +488,7 @@
           class: 'btn btn--ghost lvlbtn',
           type: 'button',
           title: 'Builder mode — how much the app shows and explains',
+          'aria-label': 'Builder mode',
           onclick: function () { Shell.openLevelPicker(false); }
         })),
         el('button', {

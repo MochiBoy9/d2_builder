@@ -36,6 +36,8 @@
 
   function card(b) {
     var isCurrent = D2.state.build && b.id === D2.state.build.id;
+    // The heading falls back to this; so should everything a screen reader says.
+    var name = b.name || 'Untitled Build';
     var stats = B.computeStats(B.hydrate(b)).total;
     var exotics = exoticNames(b);
 
@@ -51,7 +53,7 @@
           html: D2.icon(b.classId || 'slot', { size: 22 })
         }),
         el('div', { class: 'stack', style: { 'min-width': '0' } }, [
-          el('h3', { class: 'buildcard__title', text: b.name || 'Untitled Build' }),
+          el('h3', { class: 'buildcard__title', text: name }),
           el('p', { class: 'buildcard__sub', text: summary(b) }),
           exotics.length
             ? el('p', { class: 'buildcard__sub', style: { color: 'var(--rar-exotic)' }, text: exotics.join(' + ') })
@@ -94,7 +96,7 @@
           type: 'button',
           title: 'Edit tags',
           html: D2.icon('edit', { size: 13 }),
-          'aria-label': 'Edit tags for ' + b.name,
+          'aria-label': 'Edit tags for ' + name,
           onclick: function () { editTags(b); }
         }),
         el('button', {
@@ -102,7 +104,7 @@
           type: 'button',
           title: 'Duplicate',
           html: D2.icon('copy', { size: 13 }),
-          'aria-label': 'Duplicate ' + b.name,
+          'aria-label': 'Duplicate ' + name,
           onclick: function () { D2.library.duplicate(b.id); D2.bus.emit('toast', { kind: 'ok', text: 'Duplicated.' }); }
         }),
         el('button', {
@@ -110,7 +112,7 @@
           type: 'button',
           title: 'Compare against this build',
           html: D2.icon('compare', { size: 13 }),
-          'aria-label': 'Compare with ' + b.name,
+          'aria-label': 'Compare with ' + name,
           onclick: function () { D2.compareUI.openWith(b.id); }
         }),
         el('span', { class: 'lbl lbl--micro push', text: U.formatDate(b.updatedAt) }),
@@ -119,7 +121,7 @@
           type: 'button',
           title: 'Delete',
           html: D2.icon('trash', { size: 13 }),
-          'aria-label': 'Delete ' + b.name,
+          'aria-label': 'Delete ' + name,
           onclick: function () { confirmDelete(b); }
         })
       ])

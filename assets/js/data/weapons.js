@@ -299,6 +299,7 @@
       perk: 'Ionized Battery', perkDesc: 'Fires a high-impact Solar laser that ricochets off hard surfaces.',
       catalyst: 'Sleeper Simulant Catalyst', catalystDesc: 'Increases magazine size and reload speed.' }),
     w('x_lorentz_driver', 'Lorentz Driver', 'linear_fusion', 'energy', 'void', {
+      ammo: 'special',
       perk: 'Lagrangian Sight', perkDesc: 'Marks targets on precision hits. Three marks create a Void implosion on kill.',
       catalyst: 'Lorentz Driver Catalyst', catalystDesc: 'Implosions grant increased handling and stability.' }),
     w('x_queenbreaker', 'The Queenbreaker', 'linear_fusion', 'power', 'arc', {
@@ -565,10 +566,15 @@
 
   S.weaponById = {};
   S.weapons.forEach(function (x) {
-    // Power-slot weapons always draw Heavy ammo regardless of their frame type;
-    // everything else inherits its type's default unless it says otherwise.
+    // Power-slot weapons always draw Heavy ammo regardless of their frame
+    // type, and the rule runs the other way too: nothing outside the Power
+    // slot draws Heavy. A Linear Fusion or Grenade Launcher sitting in the
+    // Kinetic or Energy slot is a Special-ammo one, which is what the game
+    // does with Arbalest and Lorentz Driver.
     if (!x.ammo) {
-      x.ammo = x.slot === 'power' ? 'heavy' : D2.game.weaponTypeById[x.type].ammo;
+      var typeAmmo = D2.game.weaponTypeById[x.type].ammo;
+      if (x.slot === 'power') x.ammo = 'heavy';
+      else x.ammo = typeAmmo === 'heavy' ? 'special' : typeAmmo;
     }
     S.weaponById[x.id] = x;
   });

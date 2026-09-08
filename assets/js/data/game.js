@@ -47,9 +47,11 @@
 
   G.weaponSlots = [
     { id: 'kinetic', name: 'Kinetic', hint: 'Kinetic, Stasis and Strand weapons' },
-    { id: 'energy',  name: 'Energy',  hint: 'Any elemental weapon' },
+    { id: 'energy',  name: 'Energy',  hint: 'Arc, Solar and Void weapons' },
     { id: 'power',   name: 'Power',   hint: 'Heavy ammo only' }
   ];
+  G.weaponSlotById = {};
+  G.weaponSlots.forEach(function (s) { G.weaponSlotById[s.id] = s; });
 
   G.ammoTypes = [
     { id: 'primary', name: 'Primary', color: '#D6D2C8' },

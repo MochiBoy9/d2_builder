@@ -259,7 +259,9 @@
       var res = B.pieceStats(piece);
       var name = G.armorSlotById[slot.id].name;
       res.sources.forEach(function (src) {
-        add(name + ' — ' + src.label, 'armor', src.stats);
+        // The group is the slot id, so a reader of the breakdown gets the
+        // piece's own mark beside the row rather than one catch-all icon.
+        add(name + ' — ' + src.label, slot.id, src.stats);
       });
     });
 
@@ -359,16 +361,19 @@
     // One Exotic weapon.
     var exoticWeapons = [];
     ['kinetic', 'energy', 'power'].forEach(function (sl) {
+      // These strings are read by a person, so name the slot the way the rest
+      // of the interface does rather than printing its id.
+      var slotName = (G.weaponSlotById[sl] || { name: sl }).name;
       var wid = build.weapons[sl].weaponId;
       var wpn = wid && S.weaponById[wid];
       if (wpn && wpn.rarity === 'exotic') exoticWeapons.push(wpn.name);
       if (wpn && S.slotsForWeapon(wpn).indexOf(sl) === -1) {
-        issue('error', 'weapons', wpn.name + ' cannot go in the ' + sl + ' slot.');
+        issue('error', 'weapons', wpn.name + ' cannot go in the ' + slotName + ' slot.');
       }
       if (wpn && wpn.classId && wpn.classId !== build.classId) {
         issue('error', 'weapons', wpn.name + ' is ' + G.classById[wpn.classId].name + '-only.');
       }
-      if (!wid) issue('todo', 'weapons', 'Empty ' + sl + ' slot.');
+      if (!wid) issue('todo', 'weapons', 'Empty ' + slotName + ' slot.');
     });
     if (exoticWeapons.length > 1) {
       issue('error', 'weapons', 'Two Exotic weapons equipped: ' + exoticWeapons.join(' and ') + '. Only one is allowed.');
